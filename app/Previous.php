@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use File;
 use Storage;
-
+//dcumentos
 class Previous extends Model
 {
-    protected $table = 'previous';
+    protected $table = 'documentos';
     protected $fillable = [
         'id',
+        'cus',
         'pre_sigechr',
+        'pre_depto',
+        'identidad',
         'pre_nota',
         'pre_nota_nombre',
         'pre_nota_check',

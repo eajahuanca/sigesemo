@@ -25,7 +25,6 @@ class PreviousController extends Controller
 
     public function store(Request $request){
         try{
-            //dd($request);
             $previou = new Previous($request->all());
             $previou->idregistra = Auth::user()->id;
             $previou->idactualiza = Auth::user()->id;
