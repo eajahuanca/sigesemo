@@ -15,7 +15,7 @@ class CreateCorrelativosTable extends Migration
     {
         Schema::create('correlativos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cor_cite',200)->unique();
+            $table->string('cor_cite')->unique();
             $table->integer('cor_valor')->unsigned();
             $table->integer('cor_gestion')->unsigned();
             $table->string('cor_depto',50)->nullable();

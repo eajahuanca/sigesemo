@@ -15,8 +15,8 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cus',100)->unique();
-            $table->string('pre_sigechr',200)->unique();
+            $table->string('cus')->unique();
+            $table->string('pre_sigechr')->unique();
             $table->string('pre_depto',50);
             $table->integer('identidad')->unsigned();
             $table->string('pre_nota',200)->nullable();
