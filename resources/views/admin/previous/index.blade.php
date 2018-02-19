@@ -30,18 +30,36 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ asset('plugins/login/img/pdfprevio.png') }}" alt="">
+                                    @if($item->pre_estado == 'ACEPTADO')
+                                    <img src="{{ asset('plugins/login/img/pdfAceptado.png') }}" alt="">
+                                    @elseif($item->pre_estado == 'PENDIENTE')
+                                    <img src="{{ asset('plugins/login/img/pdfPendiente.png') }}" alt="">
+                                    @elseif($item->pre_estado == 'RECHAZADO')
+                                    <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="">
+                                    @endif
                                 </div>
                                 <div class="col-md-10">
                                     <div style="background:#E9E5E4;border-radius:6px;-webkit-border-radius:6px;moz-border-radius:6px;padding:12px;margin:-0.3em 0em 1em -1.5em;">
                                         <div class="row">
-                                            <div class="col-md-4 text-right"><a href="{{ asset($item->pre_nota) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Nota de Solicitud <em>({{ $item->pre_nota_nombre }})</em></a></div>
-                                            <div class="col-md-4 text-right"><a href="{{ asset($item->pre_ficha) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Ficha Técnica <em>({{ $item->pre_ficha_nombre }})</em></a></div>
-                                            <div class="col-md-4 text-right"><a href="{{ asset($item->pre_legal) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Doc. Responsable Legal <em>({{ $item->pre_legal_nombre }})</em></a></div>
+                                            <div class="col-md-4 text-right">
+                                                @if($item->pre_nota)
+                                                    <a href="{{ asset($item->pre_nota) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Nota de Solicitud <em>({{ $item->pre_nota_nombre }})</em></a>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                @if($item->pre_ficha)
+                                                <a href="{{ asset($item->pre_ficha) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Ficha Técnica <em>({{ $item->pre_ficha_nombre }})</em></a>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                @if($item->pre_legal)
+                                                <a href="{{ asset($item->pre_legal) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Doc. Responsable Legal <em>({{ $item->pre_legal_nombre }})</em></a>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h4 class="text-yellow">Hoja de Ruta : <b>{{ $item->pre_sigechr }}</b></h4>
+                                                <h4 class="text-yellow">Código C.U.S.: <b>{{ $item->cus }}</b>, Hoja de Ruta : <b>{{ $item->pre_sigechr }}</b></h4>
                                             </div>
                                             <div class="col-md-6">
                                                 <br>
@@ -53,9 +71,11 @@
                                                             @endcan
                                                         </td>
                                                         <td style="padding-right:3px;">
+                                                            @if($item->pre_estado == 'PENDIENTE')
                                                             @can('previous.edit')
                                                                 <a href="{{ route('previous.edit', $item->id) }}" class="btn btn-sm btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
                                                             @endcan
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -70,8 +90,11 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-9">
                                                 <i class="fa fa-gear"></i> <b>Observaciones : </b><em>{{ $item->pre_obs }}</em>
+                                            </div>
+                                            <div class="col-md-3 text-right">
+                                                <i class="fa fa-gear"></i> <b>Estado : </b><em>{{ $item->pre_estado }}</em>
                                             </div>
                                         </div>
                                     </div>

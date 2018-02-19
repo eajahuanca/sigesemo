@@ -3,12 +3,20 @@
     <div class="col-md-12">
         <table class="table table-bordered table-striped">
             <tr>
+                <td><b>Código C.U.S.</b></td>
+                <td>{{ $previous->cus }}</td>
+			</tr>
+            <tr>
                 <td><b>Hoja de Ruta SIGEC</b></td>
                 <td>{{ $previous->pre_sigechr }}</td>
 			</tr>
 			<tr>
 				<td><b>Departamento</b></td>
-				<td></td>
+				<td>{{ $previous->pre_depto}}</td>
+			</tr>
+            <tr>
+				<td><b>Entidad</b></td>
+				<td>{{ $previous->entidades->ent_nombre }}</td>
 			</tr>
             <tr>
                 <td><b>Registrado Por</b></td>

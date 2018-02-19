@@ -85,4 +85,8 @@ class Previous extends Model
     public function userActualiza(){
         return $this->belongsTo('App\User','idactualiza', 'id');
     }
+
+    public function entidades(){
+        return $this->belongsTo('App\Entidad','identidad','id');
+    }
 }
