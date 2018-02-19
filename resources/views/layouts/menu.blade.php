@@ -12,6 +12,16 @@
 		</a>
 	</li>
 	@endcan
+	@can('elegibles.index')
+	<li class="" id="lielegibles">
+		<a href="{{ route('elegibles.index') }}">
+		  	<i class="fa fa-gear"></i> <span>Cumplimiento de Elegibilidad</span>
+		  	<span class="pull-right-container">
+				<small class="label pull-right bg-yellow">1</small>
+		  	</span>
+		</a>
+	</li>
+	@endcan
 	@can('users.index')
 	<li class="treeview" id="liparametrizacion">
 		<a href="#">

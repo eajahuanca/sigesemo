@@ -44,7 +44,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('previous/{previo}', 'PreviousController@update')->name('previous.update')->middleware('permission:previous.update');
     Route::get('previous/{previo}', 'PreviousController@show')->name('previous.show')->middleware('permission:previous.show');
 
-    
+    //Cumplimiento de Elegibilidad    
+    Route::get('elegibles', 'ElegibleController@index')->name('elegibles.index')->middleware('permission:elegibles.index');
+    Route::get('elegibles/create', 'ElegibleController@create')->name('elegibles.create')->middleware('permission:elegibles.create');
+    Route::post('elegibles/store', 'ElegibleController@store')->name('elegibles.store')->middleware('permission:elegibles.store');
+    Route::get('elegibles/{elegible}/edit', 'ElegibleController@edit')->name('elegibles.edit')->middleware('permission:elegibles.edit');
+    Route::put('elegibles/{elegible}', 'ElegibleController@update')->name('elegibles.update')->middleware('permission:elegibles.update');
+    Route::get('elegibles/{elegible}', 'ElegibleController@show')->name('elegibles.show')->middleware('permission:elegibles.show');
+
+    //Tipos de Criterios
 
     Route::get('/home', 'HomeController@index');
 });

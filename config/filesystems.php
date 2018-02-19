@@ -68,6 +68,21 @@ return [
             'root' => public_path('archivo/previous/legal'),
         ],
 
+        'finanza' => [
+            'driver' => 'local',
+            'root' => public_path('archivo/elegibles/finanza'),
+        ],
+
+        'tecnica' => [
+            'driver' => 'local',
+            'root' => public_path('archivo/elegibles/tecnica'),
+        ],
+
+        'legal2' => [
+            'driver' => 'local',
+            'root' => public_path('archivo/elegibles/legal2'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

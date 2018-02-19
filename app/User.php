@@ -44,6 +44,10 @@ class User extends Authenticatable
     }
 
     public function previous(){
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Previous');
+    }
+
+    public function elegibles(){
+        return $this->hasMany('App\Elegible');
     }
 }
