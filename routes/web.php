@@ -44,13 +44,29 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('previous/{previo}', 'PreviousController@update')->name('previous.update')->middleware('permission:previous.update');
     Route::get('previous/{previo}', 'PreviousController@show')->name('previous.show')->middleware('permission:previous.show');
 
-    //Cumplimiento de Elegibilidad    
-    Route::get('elegibles', 'ElegibleController@index')->name('elegibles.index')->middleware('permission:elegibles.index');
-    Route::get('elegibles/create', 'ElegibleController@create')->name('elegibles.create')->middleware('permission:elegibles.create');
-    Route::post('elegibles/store', 'ElegibleController@store')->name('elegibles.store')->middleware('permission:elegibles.store');
-    Route::get('elegibles/{elegible}/edit', 'ElegibleController@edit')->name('elegibles.edit')->middleware('permission:elegibles.edit');
-    Route::put('elegibles/{elegible}', 'ElegibleController@update')->name('elegibles.update')->middleware('permission:elegibles.update');
-    Route::get('elegibles/{elegible}', 'ElegibleController@show')->name('elegibles.show')->middleware('permission:elegibles.show');
+    //Cumplimiento de Elegibilidad - FINANCIERO
+    Route::get('elefin', 'ElegibleFinancieroController@index')->name('elefin.index')->middleware('permission:elefin.index');
+    Route::get('elefin/create', 'ElegibleFinancieroController@create')->name('elefin.create')->middleware('permission:elefin.create');
+    Route::post('elefin/store', 'ElegibleFinancieroController@store')->name('elefin.store')->middleware('permission:elefin.store');
+    Route::get('elefin/{elegible}/edit', 'ElegibleFinancieroController@edit')->name('elefin.edit')->middleware('permission:elefin.edit');
+    Route::put('elefin/{elegible}', 'ElegibleFinancieroController@update')->name('elefin.update')->middleware('permission:elefin.update');
+    Route::get('elefin/{elegible}', 'ElegibleFinancieroController@show')->name('elefin.show')->middleware('permission:elefin.show');
+
+    //Cumplimiento de elegibilidad - TECNICO
+    Route::get('eletec', 'ElegibleTecnicoController@index')->name('eletec.index')->middleware('permission:eletec.index');
+    Route::get('eletec/create', 'ElegibleTecnicoController@create')->name('eletec.create')->middleware('permission:eletec.create');
+    Route::post('eletec/store', 'ElegibleTecnicoController@store')->name('eletec.store')->middleware('permission:eletec.store');
+    Route::get('eletec/{elegible}/edit', 'ElegibleTecnicoController@edit')->name('eletec.edit')->middleware('permission:eletec.edit');
+    Route::put('eletec/{elegible}', 'ElegibleTecnicoController@update')->name('eletec.update')->middleware('permission:eletec.update');
+    Route::get('eletec/{elegible}', 'ElegibleTecnicoController@show')->name('eletec.show')->middleware('permission:eletec.show');
+
+    //Cumplimiento de elegibilidad - LEGAL
+    Route::get('eleleg', 'ElegibleLegalController@index')->name('eleleg.index')->middleware('permission:eleleg.index');
+    Route::get('eleleg/create', 'ElegibleLegalController@create')->name('eleleg.create')->middleware('permission:eleleg.create');
+    Route::post('eleleg/store', 'ElegibleTecnElegibleLegalControllericoController@store')->name('eleleg.store')->middleware('permission:eleleg.store');
+    Route::get('eleleg/{elegible}/edit', 'ElegibleLegalController@edit')->name('eleleg.edit')->middleware('permission:eleleg.edit');
+    Route::put('eleleg/{elegible}', 'ElegibleLegalController@update')->name('eleleg.update')->middleware('permission:eleleg.update');
+    Route::get('eleleg/{elegible}', 'ElegibleLegalController@show')->name('eleleg.show')->middleware('permission:eleleg.show');
 
     //Tipos de Criterios
 

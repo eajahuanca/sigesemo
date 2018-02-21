@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use File;
 use Storage;
-//dcumentos
+//documentos
 class Previous extends Model
 {
     protected $table = 'documentos';
@@ -88,5 +88,10 @@ class Previous extends Model
 
     public function entidades(){
         return $this->belongsTo('App\Entidad','identidad','id');
+    }
+
+    public function elegibles()
+    {
+        return $this->hasMany('App\Elegible');
     }
 }

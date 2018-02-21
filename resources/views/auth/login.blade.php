@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SISEMO</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('plugins/login/img/icofona.png') }}" />
     <link rel="stylesheet prefetch" href="{{ asset('plugins/login/css/font.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/login/css/style.css') }}">
 </head>

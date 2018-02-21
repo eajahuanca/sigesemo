@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class ElegibleController extends Controller
+class ElegibleLegalController extends Controller
 {
     public function __construct(){
         Carbon::setLocale('es');

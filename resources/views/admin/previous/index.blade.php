@@ -23,13 +23,13 @@
                     </a>
                     @endcan
                     <br>
+                    @include('fechas.fechaHora')
                     <div class="row">
-                        @include('fechas.fechaHora')
                         @foreach($previou as $item)
-                        <hr style="border:1px dashed #4B6FEA; width:95%;"/>
                         <div class="col-md-12">
+                            <hr style="border:1px dashed #4B6FEA; width:95%;"/>
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     @if($item->pre_estado == 'ACEPTADO')
                                     <img src="{{ asset('plugins/login/img/pdfAceptado.png') }}" alt="">
                                     @elseif($item->pre_estado == 'PENDIENTE')
@@ -38,8 +38,8 @@
                                     <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="">
                                     @endif
                                 </div>
-                                <div class="col-md-10">
-                                    <div style="background:#E9E5E4;border-radius:6px;-webkit-border-radius:6px;moz-border-radius:6px;padding:12px;margin:-0.3em 0em 1em -1.5em;">
+                                <div class="col-md-11">
+                                    <div style="background:#E9E5E4;border-radius:6px;-webkit-border-radius:6px;moz-border-radius:6px;padding:12px;margin:-0.3em 0em 1em 0em;">
                                         <div class="row">
                                             <div class="col-md-4 text-right">
                                                 @if($item->pre_nota)

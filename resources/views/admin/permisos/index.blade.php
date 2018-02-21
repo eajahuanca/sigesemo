@@ -45,9 +45,10 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <?php $counter = 1; ?>
                                 @foreach($permiso as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $counter++ }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td width="10px">

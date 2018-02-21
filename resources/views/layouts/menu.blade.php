@@ -12,12 +12,32 @@
 		</a>
 	</li>
 	@endcan
-	@can('elegibles.index')
-	<li class="" id="lielegibles">
-		<a href="{{ route('elegibles.index') }}">
-		  	<i class="fa fa-gear"></i> <span>Cumplimiento de Elegibilidad</span>
+	@can('elefin.index')
+	<li class="" id="lielefin">
+		<a href="{{ route('elefin.index') }}">
+		  	<i class="fa fa-gear"></i> <span>Cum. Eleg. Financiero</span>
 		  	<span class="pull-right-container">
 				<small class="label pull-right bg-yellow">1</small>
+		  	</span>
+		</a>
+	</li>
+	@endcan
+	@can('eletec.index')
+	<li class="" id="lieletec">
+		<a href="{{ route('eletec.index') }}">
+		  	<i class="fa fa-gear"></i> <span>Cum. Eleg. Técnico</span>
+		  	<span class="pull-right-container">
+				<small class="label pull-right bg-blue">1</small>
+		  	</span>
+		</a>
+	</li>
+	@endcan
+	@can('eleleg.index')
+	<li class="" id="lieleleg">
+		<a href="{{ route('eleleg.index') }}">
+		  	<i class="fa fa-gear"></i> <span>Cum. Eleg. Legal</span>
+		  	<span class="pull-right-container">
+				<small class="label pull-right bg-aqua">1</small>
 		  	</span>
 		</a>
 	</li>
