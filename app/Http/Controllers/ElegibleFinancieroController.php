@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Previous;
+use App\Elegible;
+use DB;
 
 class ElegibleFinancieroController extends Controller
 {

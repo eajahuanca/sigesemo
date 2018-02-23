@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Correlativo;
 use App\Entidad;
 use App\Previous;
+use App\Programa;
 use Carbon\Carbon;
+use DB;
 use Toastr;
 
 class PreviousController extends Controller
@@ -24,7 +26,8 @@ class PreviousController extends Controller
 
     public function create(){
         $entidades = Entidad::where('ent_estado','=',1)->pluck('ent_nombre','id');
-        return view('admin.previous.create', compact('entidades'));
+        $programas = Programa::where('pro_estado','=', 1)->pluck('pro_nombre', 'pro_sigla');
+        return view('admin.previous.create', compact('entidades', 'programas'));
     }
 
     public function store(Request $request){

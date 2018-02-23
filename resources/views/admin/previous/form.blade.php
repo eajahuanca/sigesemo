@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<div class="form-group {{ $errors->has('pre_sigechr')?' has-error':'' }}">
 			{{ Form::label('pre_sigehr', 'Hoja de Ruta') }}
 			<div class="input-group">
@@ -15,23 +15,7 @@
             @endif
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="form-group {{ $errors->has('pre_depto')?' has-error':'' }}">
-			{{ Form::label('pre_depto', 'Departamento') }}
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="fa fa-gear"></i>
-				</div>
-				{{ Form::select('pre_depto', ['La Paz' => 'La Paz', 'Cochabamba' => 'Cochabamba', 'Oruro' => 'Oruro', 'Potosi' => 'Potosi', 'Santa Cruz' => 'Santa Cruz', 'Beni' => 'Beni', 'Chuquisaca' => 'Chuquisaca', 'Tarija' => 'Tarija', 'Pando' => 'Pando'], null, ['class' => 'form-control select2']) }}
-			</div>
-			@if($errors->has('pre_depto'))
-                <span style="color:red;">
-                    <strong>{{ $errors->first('pre_depto') }}</strong>
-                </span>
-            @endif
-		</div>
-	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<div class="form-group {{ $errors->has('identidad')?' has-error':'' }}">
 			{{ Form::label('identidad', 'Entidad') }}
 			<div class="input-group">
@@ -41,10 +25,42 @@
 				{{ Form::select('identidad', $entidades, null, ['class' => 'form-control select2']) }}
 			</div>
 			@if($errors->has('identidad'))
+				<span style="color:red;">
+					<strong>{{ $errors->first('identidad') }}</strong>
+				</span>
+			@endif
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group {{ $errors->has('pre_depto')?' has-error':'' }}">
+			{{ Form::label('pre_depto', 'Departamento') }}
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="fa fa-gear"></i>
+				</div>
+				{{ Form::select('pre_depto', ['La Paz' => 'La Paz', 'Cochabamba' => 'Cochabamba', 'Oruro' => 'Oruro', 'Potosi' => 'Potosi', 'Santa Cruz' => 'Santa Cruz', 'Beni' => 'Beni', 'Chuquisaca' => 'Chuquisaca', 'Tarija' => 'Tarija', 'Pando' => 'Pando', 'Nacional' => 'Nacional'], null, ['class' => 'form-control select2']) }}
+			</div>
+			@if($errors->has('pre_depto'))
                 <span style="color:red;">
-                    <strong>{{ $errors->first('identidad') }}</strong>
+                    <strong>{{ $errors->first('pre_depto') }}</strong>
                 </span>
             @endif
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group {{ $errors->has('pre_municipio')?' has-error':'' }}">
+			{{ Form::label('pre_municipio', 'Municipio(s)') }}
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="fa fa-gear"></i>
+				</div>
+				{{ Form::select('pre_municipio',['aqui' => 'aquii'], null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+			</div>
+			@if($errors->has('pre_municipio'))
+				<span style="color:red;">
+					<strong>{{ $errors->first('pre_municipio') }}</strong>
+				</span>
+			@endif
 		</div>
 	</div>
 </div>
@@ -53,7 +69,23 @@
 	<div class="col-md-10">
 		<div class="well well-lg">
 			<?php error_reporting(0); ?>
-			<h3>Documentos</h3>
+			<h3>Selecciona el Tipo de Programa (Criterio)</h3>
+			@foreach($programas as $programa)
+			{{ dd($programa) }}
+			<div class="row">
+				<div class="col-md-12">
+					<label>{{ Form::checkbox('pre_programa[]', $programa->pro_sigla, null,['class' => 'flat-red']) }}
+						{!! $programa->pro_sigla.' - '.$programa->pro_nombre !!}
+					</label>
+					@if($errors->has('pre_programa[]'))
+						<span style="color:red;">
+							<strong>{{ $errors->first('pre_programa[]') }}</strong>
+						</span>
+					@endif
+				</div>	
+			</div>
+			@endforeach
+			<h3>Documentos Previos</h3>
 			<div class="row">
 				<div class="col-md-3"><label>{{ Form::checkbox('pre_nota_check', 1, null,['class' => 'flat-red']) }} Nota de Solicitud</label>
 					@if($errors->has('pre_nota_check'))

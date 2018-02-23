@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function elegibles(){
         return $this->hasMany('App\Elegible');
     }
+
+    public function programas(){
+        return $this->hasMany('App\Programa');
+    }
 }
