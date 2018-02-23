@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use File;
 use Storage;
+use DB;
 //documentos
 class Previous extends Model
 {
@@ -93,5 +94,44 @@ class Previous extends Model
     public function elegibles()
     {
         return $this->hasMany('App\Elegible');
+    }
+
+    public function scopeCantidadEstados(){
+        return DB::table('documentos')
+                ->select('pre_estado', DB::raw('count(*) as total'))
+                ->groupBy('pre_estado')
+                ->get();
+    }
+
+    public function scopeCantidadAceptadoDepto(){
+        return DB::table('documentos')
+                ->select('pre_depto', DB::raw('count(*) as total'))
+                ->where('pre_estado','=','ACEPTADO')
+                ->groupBy('pre_depto')
+                ->get();
+    }
+
+    public function scopeCantidadPendienteDepto(){
+        return DB::table('documentos')
+                ->select('pre_depto', DB::raw('count(*) as total'))
+                ->where('pre_estado','=','PENDIENTE')
+                ->groupBy('pre_depto')
+                ->get();
+    }
+
+    public function scopeCantidadRechazadoDepto(){
+        return DB::table('documentos')
+                ->select('pre_depto', DB::raw('count(*) as total'))
+                ->where('pre_estado','=','RECHAZADO')
+                ->groupBy('pre_depto')
+                ->get();
+    }
+
+    public function scopeCantidadProgramas(){
+        return DB::table('documentos')
+                ->select('pre_programa', DB::raw('count(*) as total'))
+                ->where('pre_programa','<>','')
+                ->groupBy('pre_programa')
+                ->get();
     }
 }

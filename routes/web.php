@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('previous/{previo}/edit', 'PreviousController@edit')->name('previous.edit')->middleware('permission:previous.edit');
     Route::put('previous/{previo}', 'PreviousController@update')->name('previous.update')->middleware('permission:previous.update');
     Route::get('previous/{previo}', 'PreviousController@show')->name('previous.show')->middleware('permission:previous.show');
+    Route::get('reportchart','PreviousController@getPieChart');
 
     //Cumplimiento de Elegibilidad - FINANCIERO
     Route::get('elefin', 'ElegibleFinancieroController@index')->name('elefin.index')->middleware('permission:elefin.index');
@@ -68,7 +69,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('eleleg/{elegible}', 'ElegibleLegalController@update')->name('eleleg.update')->middleware('permission:eleleg.update');
     Route::get('eleleg/{elegible}', 'ElegibleLegalController@show')->name('eleleg.show')->middleware('permission:eleleg.show');
 
-    //Tipos de Criterios
+    //Municipios
+    Route::get('getmunicipio/{depto}','MunicipioController@getMunicipio');
 
     Route::get('/home', 'HomeController@index');
 });

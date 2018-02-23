@@ -54,7 +54,7 @@
 				<div class="input-group-addon">
 					<i class="fa fa-gear"></i>
 				</div>
-				{{ Form::select('pre_municipio',['aqui' => 'aquii'], null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+				{{ Form::select('pre_municipio[]', ['' => 'Seleccione'], null, ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'pre_municipio']) }}
 			</div>
 			@if($errors->has('pre_municipio'))
 				<span style="color:red;">
@@ -71,10 +71,9 @@
 			<?php error_reporting(0); ?>
 			<h3>Selecciona el Tipo de Programa (Criterio)</h3>
 			@foreach($programas as $programa)
-			{{ dd($programa) }}
 			<div class="row">
 				<div class="col-md-12">
-					<label>{{ Form::checkbox('pre_programa[]', $programa->pro_sigla, null,['class' => 'flat-red']) }}
+					<label>{{ Form::checkbox('pre_programa[]', $programa->pro_sigla, null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
 						{!! $programa->pro_sigla.' - '.$programa->pro_nombre !!}
 					</label>
 					@if($errors->has('pre_programa[]'))

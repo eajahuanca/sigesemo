@@ -26,7 +26,7 @@ class PreviousController extends Controller
 
     public function create(){
         $entidades = Entidad::where('ent_estado','=',1)->pluck('ent_nombre','id');
-        $programas = Programa::where('pro_estado','=', 1)->pluck('pro_nombre', 'pro_sigla');
+        $programas = Programa::where('pro_estado','=', 1)->get();
         return view('admin.previous.create', compact('entidades', 'programas'));
     }
 
@@ -42,11 +42,27 @@ class PreviousController extends Controller
                 'pre_ficha_check' => 'Ficha',
                 'pre_legal' => 'Legal (Archivo PDF)',
                 'pre_legal_check' => 'Legal',
-                'pre_obs' => 'Observaciones'
+                'pre_obs' => 'Observaciones',
+                'pre_programa' => 'Programa(s)',
+                'pre_municipio' => 'Municipio(s)'
             );
             $previou = new Previous($request->all());
             $previou->idregistra = Auth::user()->id;
             $previou->idactualiza = Auth::user()->id;
+            $stringProgramas = "";
+            if(count($request->input('pre_programa'))>0){
+                for($position = 0; $position < count($request->input('pre_programa')); $position++){
+                    $stringProgramas.= $request->input('pre_programa')[$position].",";
+                }
+            }
+            $stringMunicipios = "";
+            if(count($request->input('pre_municipio'))>0){
+                for($position = 0; $position < count($request->input('pre_municipio')); $position++){
+                    $stringMunicipios.= $request->input('pre_municipio')[$position].",";
+                }   
+            }
+            $previou->pre_programa = $stringProgramas;
+            $previou->pre_municipio = $stringMunicipios;
             if(isset($_POST['btnaceptar'])){
                 $previou->pre_estado = 'ACEPTADO';
                 $validator = Validator::make($request->all(), [
@@ -58,7 +74,9 @@ class PreviousController extends Controller
                     'pre_ficha' => 'required|mimes:pdf',
                     'pre_ficha_check' => 'required',
                     'pre_legal' => 'required|mimes:pdf',
-                    'pre_legal_check' => 'required'
+                    'pre_legal_check' => 'required',
+                    'pre_municipio' =>'required',
+                    'pre_programa' => 'required'
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
@@ -71,7 +89,10 @@ class PreviousController extends Controller
                     'pre_sigechr' => 'required|min:5',
                     'pre_depto' => 'required',
                     'identidad' => 'required',
-                    'pre_obs' => 'required|min:10'
+                    'pre_obs' => 'required|min:10',
+                    'pre_nota' => 'mimes:pdf',
+                    'pre_ficha' => 'mimes:pdf',
+                    'pre_legal' => 'mimes:pdf'
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
@@ -84,7 +105,10 @@ class PreviousController extends Controller
                     'pre_sigechr' => 'required|min:5',
                     'pre_depto' => 'required',
                     'identidad' => 'required',
-                    'pre_obs' => 'required|min:10'
+                    'pre_obs' => 'required|min:10',
+                    'pre_nota' => 'mimes:pdf',
+                    'pre_ficha' => 'mimes:pdf',
+                    'pre_legal' => 'mimes:pdf'
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
@@ -105,8 +129,9 @@ class PreviousController extends Controller
 
     public function edit($id){
         $previou = Previous::find($id);
+        $programas = Programa::where('pro_estado','=', 1)->get();
         $entidades = Entidad::where('ent_estado','=',1)->pluck('ent_nombre','id');
-        return view('admin.previous.edit', compact('previou','entidades'));
+        return view('admin.previous.edit', compact('previou','entidades','programas'));
     }
 
     public function update(Request $request, $id){
@@ -121,11 +146,27 @@ class PreviousController extends Controller
                 'pre_ficha_check' => 'Ficha',
                 'pre_legal' => 'Legal (Archivo PDF)',
                 'pre_legal_check' => 'Legal',
-                'pre_obs' => 'Observaciones'
+                'pre_obs' => 'Observaciones',
+                'pre_programa' => 'Programa(s)',
+                'pre_municipio' => 'Municipio(s)'
             );
             $previou = Previous::find($id);
             $previou->fill($request->all());
             $previou->idactualiza = Auth::user()->id;
+            $stringProgramas = "";
+            if(count($request->input('pre_programa'))>0){
+                for($position = 0; $position < count($request->input('pre_programa')); $position++){
+                    $stringProgramas.= $request->input('pre_programa')[$position].",";
+                }
+            }
+            $stringMunicipios = "";
+            if(count($request->input('pre_municipio'))>0){
+                for($position = 0; $position < count($request->input('pre_municipio')); $position++){
+                    $stringMunicipios.= $request->input('pre_municipio')[$position].",";
+                }   
+            }
+            $previou->pre_programa = $stringProgramas;
+            $previou->pre_municipio = $stringMunicipios;
             if($previou->pre_estado == 'PENDIENTE'){
                 if(isset($_POST['btnaceptar'])){
                     $previou->pre_estado = 'ACEPTADO';
@@ -138,7 +179,9 @@ class PreviousController extends Controller
                         'pre_ficha' => 'required|mimes:pdf',
                         'pre_ficha_check' => 'required',
                         'pre_legal' => 'required|mimes:pdf',
-                        'pre_legal_check' => 'required'
+                        'pre_legal_check' => 'required',
+                        'pre_programa' => 'required',
+                        'pre_municipio' => 'required'
                     ]);
                     $validator->setAttributeNames($attributes);
                     if ($validator->fails()) {
@@ -151,7 +194,10 @@ class PreviousController extends Controller
                         'pre_sigechr' => 'required|min:5',
                         'pre_depto' => 'required',
                         'identidad' => 'required',
-                        'pre_obs' => 'required|min:10'
+                        'pre_obs' => 'required|min:10',
+                        'pre_nota' => 'required|mimes:pdf',
+                        'pre_ficha' => 'mimes:pdf',
+                        'pre_legal' => 'mimes:pdf'
                     ]);
                     $validator->setAttributeNames($attributes);
                     if ($validator->fails()) {
@@ -164,7 +210,10 @@ class PreviousController extends Controller
                         'pre_sigechr' => 'required|min:5',
                         'pre_depto' => 'required',
                         'identidad' => 'required',
-                        'pre_obs' => 'required|min:10'
+                        'pre_obs' => 'required|min:10',
+                        'pre_nota' => 'mimes:pdf',
+                        'pre_ficha' => 'mimes:pdf',
+                        'pre_legal' => 'mimes:pdf'
                     ]);
                     $validator->setAttributeNames($attributes);
                     if ($validator->fails()) {
@@ -196,5 +245,14 @@ class PreviousController extends Controller
             return '0'.$valor;
         if($valor>=1000)
             return $valor;
+    }
+
+    public function getPieChart(){
+        $estado = Previous::cantidadEstados();
+        $aceptado = Previous::cantidadAceptadoDepto();
+        $pendiente = Previous::cantidadPendienteDepto();
+        $rechazado = Previous::cantidadRechazadoDepto();
+        $programa = Previous::cantidadProgramas();
+        return view('admin.previous.piechart', compact('estado', 'aceptado', 'pendiente', 'rechazado', 'programa'));
     }
 }

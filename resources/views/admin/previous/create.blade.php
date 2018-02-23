@@ -18,7 +18,7 @@
                 </div>
                 <div class="box-body">
                     <div class="content">
-                    {{ Form::open(['route' => 'previous.store', 'files' => true]) }}
+                    {{ Form::open(['route' => 'previous.store', 'files' => true, 'name' => 'frmDocumento']) }}
                         @include('admin.previous.form')
                         
                         <div class="form-group">
@@ -38,5 +38,19 @@
 @section('scripts')
 	<script>
 		$("#liprevious").addClass("active");
-	</script>
+
+        //Municipios por departamento
+        $("select[id=pre_municipio]").empty();
+        $("select[id=pre_municipio]").append("<option value='' disabled selected style='display:none;'></option>");
+        $("select[id=pre_depto]").change(function(){
+            $("select[id=pre_municipio]").empty();
+            var depto = $("select[id=pre_depto]").val();
+            $.get("{{ url('/getmunicipio') }}" + '/' + depto, function(rpta){
+                $.each(rpta, function(index, value){
+                    $("select[id=pre_municipio]").append("<option value='" + value['mun_municipio'] + "'>" + value['mun_municipio'] + "</option>");
+                });
+                $("select[id=pre_municipio]").append("<option value='Ninguno'>Ninguno</option>");
+            });
+        });
+    </script>
 @endsection

@@ -12,6 +12,16 @@
 		</a>
 	</li>
 	@endcan
+
+	<li class="" id="lipiechart">
+		<a href="{{ url('reportchart') }}">
+				<i class="fa fa-pie-chart"></i> <span>D.P. Gráfico</span>
+				<span class="pull-right-container">
+				<small class="label pull-right bg-yellow">1</small>
+				</span>
+		</a>
+	</li>
+
 	@can('elefin.index')
 	<li class="" id="lielefin">
 		<a href="{{ route('elefin.index') }}">
