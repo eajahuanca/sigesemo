@@ -63,21 +63,27 @@
                                                 @if($elegible['ele_finanza'])
                                                     <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible->ele_finanza_nombre }})</em></a><br>
                                                     <div class="text-left">
-                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible->userActualizaFinanza->us_nombre.' '.$elegible->userActualizaFinanza->us_paterno.' '.$elegible->userActualizaFinanza->us_materno }}</em><br>
-                                                        <em><b>Observaciones : </b>{{ $elegible->ele_obsfinanza }}</em>
+                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaFinanza']->us_nombre.' '.$elegible['userActualizaFinanza']->us_paterno.' '.$elegible['userActualizaFinanza']->us_materno }}</em><br>
+                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obsfinanza'] }}</em>
                                                     </div>
                                                 @endif
                                             </div>
                                             <div class="col-md-4 text-right">
-                                                @if($item->pre_ficha)
-                                                <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Técnica <em>({{ $item->pre_ficha_nombre }})</em></a><br>
-                                                <em><b>Observaciones : </b>algo de obs</em>
+                                                @if($elegible['ele_tecnica'])
+                                                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Técnica <em>({{ $elegible->ele_tecnica_nombre }})</em></a><br>
+                                                    <div class="text-left">
+                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaTecnica']->us_nombre.' '.$elegible['userActualizaTecnica']->us_paterno.' '.$elegible['userActualizaTecnica']->us_materno }}</em><br>
+                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obstecnica'] }}</em>
+                                                    </div>
                                                 @endif
                                             </div>
                                             <div class="col-md-4 text-right">
-                                                @if($item->pre_legal)
-                                                <a href="{{ asset($item->pre_legal) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Legal <em>({{ $item->pre_legal_nombre }})</em></a><br>
-                                                <em><b>Observaciones : </b>algo de obs</em>
+                                                @if($elegible['ele_legal'])
+                                                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible['ele_legal_nombre'] }})</em></a><br>
+                                                    <div class="text-left">
+                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaLegal']->us_nombre.' '.$elegible['userActualizaLegal']->us_paterno.' '.$elegible['userActualizaLegal']->us_materno }}</em><br>
+                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obslegal'] }}</em>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -90,15 +96,22 @@
                                                 <table class="pull-right">
                                                     <tr>
                                                         <td style="padding-right:3px;">
+                                                            @if($elegible['ele_estadofinanza'] != 'PENDIENTE' && $elegible['ele_estadofinanza'] != 'RECHAZADO')
+                                                            @can('elefin.create')
+                                                                <a href="{{ route('elefin.create', $item->id) }}" class="btn bnt-sm btn-success btn-social"><i class="fa " style="font-size:14px;font-weigth:bolder;">Bs</i> Aprobar Financiamiento</a>
+                                                            @endcan
+                                                            @endif
+                                                        </td>
+                                                        <td style="padding-right:3px;">
                                                             @can('elefin.show')
                                                                 <button type="button" id="btnDetalle" class="btn btn-sm btn-warning btn-social" data-toggle="modal" data-target="#modalVer" onclick="detalleFunction({{ $item->id }})"><i class="fa fa-eye"></i> Ver Detalle</button>
                                                             @endcan
                                                         </td>
                                                         <td style="padding-right:3px;">
-                                                            @if($item->pre_estado == 'PENDIENTE')
-                                                            @can('elefin.edit')
-                                                                <a href="{{ route('elefin.edit', $item->id) }}" class="btn btn-sm btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
-                                                            @endcan
+                                                            @if($elegible['ele_estadofinanza'] == 'PENDIENTE')
+                                                                @can('elefin.edit')
+                                                                    <a href="{{ route('elefin.edit', $item->id) }}" class="btn btn-sm btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
+                                                                @endcan
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -139,7 +152,7 @@
                     <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Detalle del Rol</h4>
                 </div>
-                <div class="modal-body" id="detallePreviou">
+                <div class="modal-body" id="detalleElegible">
                 </div>
                 <div class="modal-footer bg-yellow">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -150,14 +163,14 @@
 @endsection
 @section('scripts')
     <script>
-        $("#liprevious").addClass("active");
-        function detalleFunction(idPrevious){
-            var _url = "{{ url('previous')}}" + "/" + idPrevious;
+        $("#lielefin").addClass("active");
+        function detalleFunction(idelegible){
+            var _url = "{{ url('elegible')}}" + "/" + idelegible;
             $.ajax({
                 url: _url,
                 dataType: 'html',
                 success: function(data){
-                    $("#detallePreviou").html(data);
+                    $("#detalleElegible").html(data);
                 },
                 error: function(e){
                     console.log('Error : ' + e);

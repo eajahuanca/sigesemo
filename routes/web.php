@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Cumplimiento de Elegibilidad - FINANCIERO
     Route::get('elefin', 'ElegibleFinancieroController@index')->name('elefin.index')->middleware('permission:elefin.index');
-    Route::get('elefin/create', 'ElegibleFinancieroController@create')->name('elefin.create')->middleware('permission:elefin.create');
+    Route::get('elefin/{elegible}/create', 'ElegibleFinancieroController@create')->name('elefin.create')->middleware('permission:elefin.create');
     Route::post('elefin/store', 'ElegibleFinancieroController@store')->name('elefin.store')->middleware('permission:elefin.store');
     Route::get('elefin/{elegible}/edit', 'ElegibleFinancieroController@edit')->name('elefin.edit')->middleware('permission:elefin.edit');
     Route::put('elefin/{elegible}', 'ElegibleFinancieroController@update')->name('elefin.update')->middleware('permission:elefin.update');
