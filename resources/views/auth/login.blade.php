@@ -18,9 +18,9 @@
                 <img class="imagen" src="{{ asset('plugins/login/img/logo.jpg') }}"/>
                 <p class="login__titulo">SISTEMA DE SEGUIMIENTO Y MONITOREO DE PROYECTOS</p>
 			</center>
-			@if ($errors->has('email'))
+			@if ($errors->has('us_cuenta'))
 				<span class="help-block">
-					<strong>{{ $errors->first('email') }}</strong>
+					<strong>{{ $errors->first('us_cuenta') }}</strong>
 				</span>
 			@endif
             {!! Form::open(['route' => 'login', 'method' => 'POST', 'name' => 'frmlogin']) !!}
@@ -29,7 +29,7 @@
                         <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
                             <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
                         </svg>
-                        <input type="text" class="login__input name" placeholder="Cuenta de Usuario" name="email" id="email" autofocus value="{{ old('email') }}" />
+                        <input type="text" class="login__input name" placeholder="Cuenta de Usuario" name="us_cuenta" id="us_cuenta" autofocus value="{{ old('us_cuenta') }}" />
                     </div>
                     <div class="login__row">
                         <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
