@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use File;
 use Storage;
+use Carbon\Carbon;
 
 class Elegible extends Model
 {

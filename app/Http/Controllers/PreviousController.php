@@ -80,6 +80,7 @@ class PreviousController extends Controller
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
+                    Toastr::error('Verificar campos validos para su correción','Error');
                     return redirect('previous/create')->withErrors($validator)->withInput();
                 }
             }
@@ -96,6 +97,7 @@ class PreviousController extends Controller
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
+                    Toastr::error('Verificar campos validos para su correción','Error');
                     return redirect('previous/create')->withErrors($validator)->withInput();
                 }
             }
@@ -112,6 +114,7 @@ class PreviousController extends Controller
                 ]);
                 $validator->setAttributeNames($attributes);
                 if ($validator->fails()) {
+                    Toastr::error('Verificar campos validos para su correción','Error');
                     return redirect('previous/create')->withErrors($validator)->withInput();
                 }
             }

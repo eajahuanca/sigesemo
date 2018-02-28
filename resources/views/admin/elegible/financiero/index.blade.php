@@ -20,118 +20,119 @@
                     @include('fechas.fechaHora')
                     <div class="row">
                         @foreach($documento as $item)
-                        <div class="col-md-12">
-                            <hr style="border:1px dashed #4B6FEA; width:95%;"/>
-                            <?php 
-                                $elegible = App\Elegible::find($item->id);
-                            ?>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    @if($elegible != null)
-                                        @if($elegible['ele_estadofinanza'] == 'ACEPTADO')
-                                        <img src="{{ asset('plugins/login/img/pdfAceptado.png') }}" alt="">
-                                        @elseif($elegible['ele_estadofinanza'] == 'PENDIENTE')
-                                        <img src="{{ asset('plugins/login/img/pdfPendiente.png') }}" alt="">
-                                        @elseif($elegible['ele_estadofinanza'] == 'RECHAZADO')
-                                        <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="">
-                                        @endif
-                                    @else
-                                        <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="sin valor" title="sin valor">
+                        <hr style="border:1px dashed #4B6FEA; width:95%;"/>
+                        <?php
+                            error_reporting(0);
+                            $elegible = App\Elegible::where('iddocumento','=',$item->id)->first();
+                        ?>
+                        <div class="row">
+                            <div class="col-md-1">
+                                @if($elegible != null)
+                                    @if($elegible->ele_estadofinanza == 'ACEPTADO')
+                                    <img src="{{ asset('plugins/login/img/pdfAceptado.png') }}" alt="">
+                                    @elseif($elegible->ele_estadofinanza == 'PENDIENTE')
+                                    <img src="{{ asset('plugins/login/img/pdfPendiente.png') }}" alt="">
+                                    @elseif($elegible->ele_estadofinanza == 'RECHAZADO')
+                                    <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="">
                                     @endif
-                                </div>
-                                <div class="col-md-11">
-                                    <div style="background:#E9E5E4;border-radius:6px;-webkit-border-radius:6px;moz-border-radius:6px;padding:12px;margin:-0.3em 0em 1em 0em;">
-                                        <div class="row">
-                                            <div class="col-md-4 text-right">
-                                                @if($item->pre_nota)
-                                                    <a href="{{ asset($item->pre_nota) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Nota de Solicitud <em>({{ $item->pre_nota_nombre }})</em></a>
-                                                @endif
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                @if($item->pre_ficha)
-                                                <a href="{{ asset($item->pre_ficha) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Ficha Técnica <em>({{ $item->pre_ficha_nombre }})</em></a>
-                                                @endif
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                @if($item->pre_legal)
-                                                <a href="{{ asset($item->pre_legal) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Doc. Responsable Legal <em>({{ $item->pre_legal_nombre }})</em></a>
-                                                @endif
-                                            </div>
+                                @else
+                                    <img src="{{ asset('plugins/login/img/pdfRechazado.png') }}" alt="sin valor" title="sin valor">
+                                @endif
+                            </div>
+                            <div class="col-md-11">
+                                <div style="background:#E9E5E4;border-radius:6px;-webkit-border-radius:6px;moz-border-radius:6px;padding:12px 12px 12px 12px;margin-right:2em;margin-left:2em;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="text-yellow">Código C.U.S.: <b>{{ $item->cus }}</b>, Hoja de Ruta : <b>{{ $item->pre_sigechr }}</b></h4>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-4 text-right">
-                                                @if($elegible['ele_finanza'])
-                                                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible->ele_finanza_nombre }})</em></a><br>
-                                                    <div class="text-left">
-                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaFinanza']->us_nombre.' '.$elegible['userActualizaFinanza']->us_paterno.' '.$elegible['userActualizaFinanza']->us_materno }}</em><br>
-                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obsfinanza'] }}</em>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                @if($elegible['ele_tecnica'])
-                                                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Técnica <em>({{ $elegible->ele_tecnica_nombre }})</em></a><br>
-                                                    <div class="text-left">
-                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaTecnica']->us_nombre.' '.$elegible['userActualizaTecnica']->us_paterno.' '.$elegible['userActualizaTecnica']->us_materno }}</em><br>
-                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obstecnica'] }}</em>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                @if($elegible['ele_legal'])
-                                                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible['ele_legal_nombre'] }})</em></a><br>
-                                                    <div class="text-left">
-                                                        <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible['userActualizaLegal']->us_nombre.' '.$elegible['userActualizaLegal']->us_paterno.' '.$elegible['userActualizaLegal']->us_materno }}</em><br>
-                                                        <em><b>Observaciones : </b>{{ $elegible['ele_obslegal'] }}</em>
-                                                    </div>
-                                                @endif
-                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        @if($item->pre_nota)
+                                                        <a href="{{ asset($item->pre_nota) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Nota de Solicitud <em>({{ $item->pre_nota_nombre }})</em></a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @if($item->pre_ficha)
+                                                        <a href="{{ asset($item->pre_ficha) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Ficha Técnica <em>({{ $item->pre_ficha_nombre }})</em></a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @if($item->pre_legal)
+                                                        <a href="{{ asset($item->pre_legal) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> Doc. Responsable Legal <em>({{ $item->pre_legal_nombre }})</em></a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class="fa fa-calendar"></i> <b>En fecha : </b><em>{{ fechaHora($item->updated_at) }}</em>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class="fa fa-gear"></i> <b>Observaciones : </b><em>{{ $item->pre_obs }}</em>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class="fa fa-gear"></i> <b>Estado : </b><em>@if($item->pre_estado == 'ACEPTADO'){{ $item->pre_estado.', (Etapa Documentación Previa)' }} @endif</em>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h4 class="text-yellow">Código C.U.S.: <b>{{ $item->cus }}</b>, Hoja de Ruta : <b>{{ $item->pre_sigechr }}</b></h4>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @if($elegible->ele_finanza || $elegible->ele_obsfinanza)
+                                                        @if($elegible->ele_finanza)
+                                                        <a href="{{ $elegible->ele_finanza }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible->ele_finanza_nombre }})</em></a><br>
+                                                        @endif
+                                                        <div class="text-left">
+                                                            <i class="fa fa-calendar"></i> <b>En fecha : </b><em>{{ fechaHora($elegible->ele_finactualiza) }}</em><br>
+                                                            <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible->userActualizaFinanza->us_nombre.' '.$elegible->userActualizaFinanza->us_paterno.' '.$elegible->userActualizaFinanza->us_materno }}</em><br>
+                                                            <b>Observaciones : </b><em>{{ $elegible->ele_obsfinanza }}</em>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <br>
-                                                <table class="pull-right">
+                                            <hr style="border:1px solid green; width:95%;"/>
+                                            <div class="row">
+                                                <table class="pull-left">
                                                     <tr>
+                                                        @if($elegible->ele_estadofinanza != 'PENDIENTE' && $elegible->ele_estadofinanza != 'RECHAZADO' && $elegible->ele_estadofinanza != 'ACEPTADO')
                                                         <td style="padding-right:3px;">
-                                                            @if($elegible['ele_estadofinanza'] != 'PENDIENTE' && $elegible['ele_estadofinanza'] != 'RECHAZADO')
                                                             @can('elefin.create')
-                                                                <a href="{{ route('elefin.create', $item->id) }}" class="btn bnt-sm btn-success btn-social"><i class="fa " style="font-size:14px;font-weigth:bolder;">Bs</i> Aprobar Financiamiento</a>
+                                                                <a href="{{ route('elefin.create', $item->id) }}" class="btn btn-success btn-social"><i class="fa " style="font-size:14px;font-weigth:bolder;">Bs</i> Aprobar Financiamiento</a>
                                                             @endcan
-                                                            @endif
                                                         </td>
+                                                        <td style="padding-right:3px;">
+                                                                <a href="" class="btn btn-warning btn-social"><i class="fa " style="font-size:14px;font-weigth:bolder;">Bs</i> Techo Presupuestario</a>
+                                                        </td>
+                                                        @endif
                                                         <td style="padding-right:3px;">
                                                             @can('elefin.show')
-                                                                <button type="button" id="btnDetalle" class="btn btn-sm btn-warning btn-social" data-toggle="modal" data-target="#modalVer" onclick="detalleFunction({{ $item->id }})"><i class="fa fa-eye"></i> Ver Detalle</button>
+                                                                <button type="button" id="btnDetalle" class="btn btn-warning btn-social" data-toggle="modal" data-target="#modalVer" onclick="detalleFunction({{ $item->id }})"><i class="fa fa-eye"></i> Ver Detalle</button>
+                                                            @endcan
+                                                        </td>
+                                                        @if($elegible['ele_estadofinanza'] == 'PENDIENTE')
+                                                        <td style="padding-right:3px;">
+                                                            @can('elefin.edit')
+                                                                <a href="{{ route('elefin.edit', $elegible->id) }}" class="btn btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
                                                             @endcan
                                                         </td>
                                                         <td style="padding-right:3px;">
-                                                            @if($elegible['ele_estadofinanza'] == 'PENDIENTE')
-                                                                @can('elefin.edit')
-                                                                    <a href="{{ route('elefin.edit', $item->id) }}" class="btn btn-sm btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
-                                                                @endcan
-                                                            @endif
+                                                            <a href="" class="btn btn-warning btn-social"><i class="fa " style="font-size:14px;font-weigth:bolder;">Bs</i> Techo Presupuestario</a>
                                                         </td>
+                                                        @endif
                                                     </tr>
                                                 </table>
-                                            </div>
-                                        </div>                    
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <i class="fa fa-user"></i> <b>Por : </b><em>{{ $item->userActualiza->us_nombre.' '.$item->userActualiza->us_paterno.' '.$item->userActualiza->us_materno }}</em>
-                                            </div>
-                                            <div class="col-md-6 text-right">
-                                                <i class="fa fa-calendar"></i> <b>En fecha : </b><em>{{ fechaHora($item->updated_at) }}</em>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <i class="fa fa-gear"></i> <b>Observaciones : </b><em>{{ $item->pre_obs }}</em>
-                                            </div>
-                                            <div class="col-md-3 text-right">
-                                                <i class="fa fa-gear"></i> <b>Estado : </b><em>@if($item->pre_estado == 'ACEPTADO'){{ $item->pre_estado.', (Etapa Documentación Previa)' }} @endif</em>
                                             </div>
                                         </div>
                                     </div>

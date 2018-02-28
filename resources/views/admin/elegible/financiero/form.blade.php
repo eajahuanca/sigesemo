@@ -9,18 +9,18 @@
                     <table>
                         <tr>
                             <td width="10%">
-                                <label>{{ Form::checkbox('ele_tecnica_check', [], null,['class' => 'flat-red', 'id' => 'pre_programa']) }}</label>
-                                @if($errors->has('ele_tecnica_check'))
+                                <label>{{ Form::checkbox('ele_finanza_check', null, null,['class' => 'flat-red']) }}</label>
+                                @if($errors->has('ele_finanza_check'))
                                 <span style="color:red;">
-                                    <strong>{{ $errors->first('ele_tecnica_check') }}</strong>
+                                    <strong>{{ $errors->first('ele_finanza_check') }}</strong>
                                 </span>
                                 @endif
                             </td>
                             <td width="90%">
-                                {{ Form::file('ele_tecnica') }}
-                                @if($errors->has('ele_tecnica'))
+                                {{ Form::file('ele_finanza') }}
+                                @if($errors->has('ele_finanza'))
                                 <span style="color:red;">
-                                    <strong>{{ $errors->first('ele_tecnica') }}</strong>
+                                    <strong>{{ $errors->first('ele_finanza') }}</strong>
                                 </span>
                                 @endif
                             </td>
