@@ -40,7 +40,7 @@ class ElegibleTecnicoController extends Controller
             $elegible->ele_tecactualiza = date('Y-m-d H:i:s');
             $elegible->idtecnico_registra = Auth::user()->id;
             $elegible->idtecnico_actualiza = Auth::user()->id;
-
+            $elegible->ele_tecnica_check = ($request->input('ele_tecnica_check')=='on')? 1:0;
             if(isset($_POST['btnaceptar'])){
                 $validator = Validator::make($request->all(),[
                     'ele_tecnica' => 'required|mimes:pdf',
@@ -54,7 +54,6 @@ class ElegibleTecnicoController extends Controller
                 }
                 $elegible->ele_estadotecnico = "ACEPTADO";
                 $elegible->ele_estadolegal = "PENDIENTE";
-                $elegible->ele_tecnica_check = ($request->input('ele_tecnica_check')=='on')? 1:0;
             }elseif(isset($_POST['btnpendiente'])){
                 $validator = Validator::make($request->all(),[
                     'ele_tecnica' => 'mimes:pdf',
@@ -83,7 +82,7 @@ class ElegibleTecnicoController extends Controller
         }catch(\Exception $ex){
             Toastr::error('Ocurrio el siguiente error : '.$ex->getMessage(),'Error');
         }
-        return redirect()->route('elefin.index');
+        return redirect()->route('eletec.index');
     }
 
     public function show($id){

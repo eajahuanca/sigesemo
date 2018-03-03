@@ -17,7 +17,7 @@ class ElegibleFinancieroController extends Controller
         Carbon::setLocale('es');
     }
 
-    public function index(){
+    public function index(){  
         $documento = Previous::where('pre_estado','=','ACEPTADO')->get();
         return view('admin.elegible.financiero.index', compact('documento'));
     }

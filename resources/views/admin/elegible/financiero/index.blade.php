@@ -20,6 +20,11 @@
                     @include('fechas.fechaHora')
                     <div class="row">
                         @foreach($documento as $item)
+                        <?php
+                            error_reporting(0);
+                            $filtro = App\Elegible::where('iddocumento','=',$item->id)->first();
+                        ?>
+                        @if($filtro->ele_estadofinanza != 'ACEPTADO')
                         <hr style="border:1px dashed #4B6FEA; width:95%;"/>
                         <?php
                             error_reporting(0);
@@ -91,9 +96,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     @if($elegible->ele_finanza || $elegible->ele_obsfinanza)
-                                                        @if($elegible->ele_finanza)
                                                         <a href="{{ $elegible->ele_finanza }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Financiera <em>({{ $elegible->ele_finanza_nombre }})</em></a><br>
-                                                        @endif
                                                         <div class="text-left">
                                                             <i class="fa fa-calendar"></i> <b>En fecha : </b><em>{{ fechaHora($elegible->ele_finactualiza) }}</em><br>
                                                             <i class="fa fa-user"></i> <b>Por : </b><em>{{ $elegible->userActualizaFinanza->us_nombre.' '.$elegible->userActualizaFinanza->us_paterno.' '.$elegible->userActualizaFinanza->us_materno }}</em><br>
@@ -121,7 +124,7 @@
                                                                 <button type="button" id="btnDetalle" class="btn btn-warning btn-social" data-toggle="modal" data-target="#modalVer" onclick="detalleFunction({{ $item->id }})"><i class="fa fa-eye"></i> Ver Detalle</button>
                                                             @endcan
                                                         </td>
-                                                        @if($elegible['ele_estadofinanza'] == 'PENDIENTE')
+                                                        @if($elegible->ele_estadofinanza == 'PENDIENTE')
                                                         <td style="padding-right:3px;">
                                                             @can('elefin.edit')
                                                                 <a href="{{ route('elefin.edit', $elegible->id) }}" class="btn btn-primary btn-social"><i class="fa fa-edit"></i> Editar</a>
@@ -139,6 +142,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>

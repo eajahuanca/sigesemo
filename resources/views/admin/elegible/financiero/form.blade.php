@@ -28,8 +28,8 @@
                     </table>
                 </div>	
                 <div class="col-md-3">
-                    @if($elegible->id && $elegible->ele_tecnica != '')
-                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}" alt="Nota de Solicitud"/></a>
+                    @if($elegible->id && $elegible->ele_finanza != '')
+                    <a href="" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}" alt="Documento de Respaldo Financiero"/></a>
                     @endif
                 </div>
             </div>

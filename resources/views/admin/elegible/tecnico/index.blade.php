@@ -90,7 +90,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-
+                                                    @if($item->ele_tecnica || $item->ele_obstecnica)
+                                                        <a href="{{ $item->ele_tecnica }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> C.E. Técnica <em>({{ $item->ele_tecnica_nombre }})</em></a><br>
+                                                        <div class="text-left">
+                                                            <i class="fa fa-calendar"></i> <b>En fecha : </b><em>{{ fechaHora($item->ele_tecactualiza) }}</em><br>
+                                                            <i class="fa fa-user"></i> <b>Por : </b><em>{{ $item->userActualizaTecnico->us_nombre.' '.$item->userActualizaTecnico->us_paterno.' '.$item->userActualizaTecnico->us_materno }}</em><br>
+                                                            <b>Observaciones : </b><em>{{ $item->ele_obstecnica }}</em>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <hr style="border:1px solid green; width:95%;"/>
@@ -155,7 +162,7 @@
 @endsection
 @section('scripts')
     <script>
-        $("#lielefin").addClass("active");
+        $("#lieletec").addClass("active");
         function detalleFunction(idelegible){
             var _url = "{{ url('elegible')}}" + "/" + idelegible;
             $.ajax({
