@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('eleleg/{elegible}', 'ElegibleLegalController@update')->name('eleleg.update')->middleware('permission:eleleg.update');
     Route::get('eleleg/{elegible}', 'ElegibleLegalController@show')->name('eleleg.show')->middleware('permission:eleleg.show');
 
+    Route::get('ficha', 'FichaTecnicaController@index')->name('fichatecnica.index');
+
     //Municipios
     Route::get('getmunicipio/{depto}','MunicipioController@getMunicipio');
 

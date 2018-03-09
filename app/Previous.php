@@ -131,6 +131,7 @@ class Previous extends Model
         return DB::table('documentos')
                 ->select('pre_programa', DB::raw('count(*) as total'))
                 ->where('pre_programa','<>','')
+                ->where('pre_estado','<>','RECHAZADO')
                 ->groupBy('pre_programa')
                 ->get();
     }

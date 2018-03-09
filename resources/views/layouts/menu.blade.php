@@ -52,6 +52,17 @@
 		</a>
 	</li>
 	@endcan
+
+	<li class="" id="lifichatecnica">
+		<a href="{{ route('fichatecnica.index') }}">
+			<i class="fa fa-edit"></i> <span>Ficha Técnica</span>
+			<span class="pull-right-container">
+				<small class="label pull-right bg-orange">?</small>
+		  	</span>
+		</a>
+	</li>
+
+	
 	@can('users.index')
 	<li class="treeview" id="liparametrizacion">
 		<a href="#">
