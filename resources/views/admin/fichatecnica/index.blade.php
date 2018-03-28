@@ -38,6 +38,14 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="#magnitud" data-toggle="tab">
+                                                <div class="icon-circle">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                Magnitud
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="#complejidad" data-toggle="tab">
                                                 <div class="icon-circle">
                                                     <i class="ti-settings"></i>
@@ -57,34 +65,10 @@
                                 </div>
                                 <div class="tab-content">
                                     <div class="tab-pane" id="pertinencia">
-                                        <div class="row">
-                                            <h5 class="info-text"> Please tell us more about yourself.</h5>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="{{ asset('plugins/wizard/assets/img/default-avatar.jpg') }}" class="picture-src" id="wizardPicturePreview" title="" />
-                                                        <input type="file" id="wizard-picture">
-                                                    </div>
-                                                    <h6>Choose Picture</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>First Name <small>(required)</small></label>
-                                                    <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Last Name <small>(required)</small></label>
-                                                    <input name="lastname" type="text" class="form-control" placeholder="Smith...">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Email <small>(required)</small></label>
-                                                    <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('admin.fichatecnica.pertinencia.index')
+                                    </div>
+                                    <div class="tab-pane" id="magnitud">
+                                        @include('admin.fichatecnica.magnitud.index')
                                     </div>
                                     <div class="tab-pane" id="complejidad">
                                         <h5 class="info-text"> What are you doing? (checkboxes) </h5>
@@ -211,5 +195,76 @@
                 }
             });
         }
+        $(document).ready(function() {
+            $('#capa_proteccion').hide();
+            $('#click_proteccion').click(function () {
+                var elemento = document.getElementById('proteccion').value;
+                if(elemento == 0) {
+                    document.getElementById('proteccion').value = 1;
+                    $('#mag_sup_proteccion').val('');
+                    $('#capa_proteccion').show();
+                }else{
+                    document.getElementById('proteccion').value = 0;
+                    $('#mag_sup_proteccion').val('');
+                    $('#capa_proteccion').hide();
+                }
+            });
+
+            $('#capa_silvicultura').hide();
+            $('#click_silvicultura').click(function () {
+                var elemento = document.getElementById('silvicultura').value;
+                if(elemento == 0) {
+                    document.getElementById('silvicultura').value = 1;
+                    $('#mag_sup_silvicultura').val('');
+                    $('#capa_silvicultura').show();
+                }else{
+                    document.getElementById('silvicultura').value = 0;
+                    $('#mag_sup_silvicultura').val('');
+                    $('#capa_silvicultura').hide();
+                }
+            });
+
+            $('#capa_saff').hide();
+            $('#click_saff').click(function () {
+                var elemento = document.getElementById('saff').value;
+                if(elemento == 0) {
+                    document.getElementById('saff').value = 1;
+                    $('#mag_sup_saff').val('');
+                    $('#capa_saff').show();
+                }else{
+                    document.getElementById('saff').value = 0;
+                    $('#mag_sup_saff').val('');
+                    $('#capa_saff').hide();
+                }
+            });
+
+            $('#capa_comercial').hide();
+            $('#click_comercial').click(function () {
+                var elemento = document.getElementById('comercial').value;
+                if(elemento == 0) {
+                    document.getElementById('comercial').value = 1;
+                    $('#mag_sup_comercial').val('');
+                    $('#capa_comercial').show();
+                }else{
+                    document.getElementById('comercial').value = 0;
+                    $('#mag_sup_comercial').val('');
+                    $('#capa_comercial').hide();
+                }
+            });
+
+            $('#capa_global').hide();
+            $('#click_global').click(function () {
+                var elemento = document.getElementById('global').value;
+                if(elemento == 0) {
+                    document.getElementById('global').value = 1;
+                    $('#mag_sup_global').val('');
+                    $('#capa_global').show();
+                }else{
+                    document.getElementById('global').value = 0;
+                    $('#mag_sup_global').val('');
+                    $('#capa_global').hide();
+                }
+            });
+        });
     </script>
 @endsection
