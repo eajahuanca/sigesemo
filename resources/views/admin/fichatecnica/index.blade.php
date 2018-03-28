@@ -71,41 +71,11 @@
                                         @include('admin.fichatecnica.magnitud.index')
                                     </div>
                                     <div class="tab-pane" id="complejidad">
-                                        <h5 class="info-text"> What are you doing? (checkboxes) </h5>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Design">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-paint-roller"></i>
-                                                            <p>Design</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Code">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-pencil-alt"></i>
-                                                            <p>Code</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Develop">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-star"></i>
-                                                            <p>Develop</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('admin.fichatecnica.complejidad.index')
                                     </div>
                                     <div class="tab-pane" id="cobertura">
-                                        <div class="row">
+                                        @include('admin.fichatecnica.cobertura.index')
+                                        <!--<div class="row">
                                             <div class="col-sm-12">
                                                 <h5 class="info-text"> Are you living in a nice area? </h5>
                                             </div>
@@ -136,7 +106,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="wizard-footer">
@@ -196,6 +166,59 @@
             });
         }
         $(document).ready(function() {
+            // -- REGION --
+            $('#click_andino').click(function (){
+               var elemento = document.getElementById('andino').value;
+               if(elemento == 0){
+                   document.getElementById('andino').value = 1;
+                   $('#mag_reg_andino').val('Andino');
+               }else{
+                   document.getElementById('andino').value = 0;
+                   $('#mag_reg_andino').val('');
+               }
+            });
+            $('#click_valle').click(function (){
+                var elemento = document.getElementById('valle').value;
+                if(elemento == 0){
+                    document.getElementById('valle').value = 1;
+                    $('#mag_reg_valle').val('Valle');
+                }else{
+                    document.getElementById('valle').value = 0;
+                    $('#mag_reg_valle').val('');
+                }
+            });
+            $('#click_chaco').click(function (){
+                var elemento = document.getElementById('chaco').value;
+                if(elemento == 0){
+                    document.getElementById('chaco').value = 1;
+                    $('#mag_reg_chaco').val('Chaco');
+                }else{
+                    document.getElementById('chaco').value = 0;
+                    $('#mag_reg_chaco').val('');
+                }
+            });
+            $('#click_chiquitania').click(function (){
+                var elemento = document.getElementById('chiquitania').value;
+                if(elemento == 0){
+                    document.getElementById('chiquitania').value = 1;
+                    $('#mag_reg_chiquitania').val('Chiquitania');
+                }else{
+                    document.getElementById('chiquitania').value = 0;
+                    $('#mag_reg_chiquitania').val('');
+                }
+            });
+            $('#click_amazonia').click(function (){
+                var elemento = document.getElementById('amazonia').value;
+                if(elemento == 0){
+                    document.getElementById('amazonia').value = 1;
+                    $('#mag_reg_amazonia').val('Amazonia');
+                }else{
+                    document.getElementById('amazonia').value = 0;
+                    $('#mag_reg_amazonia').val('');
+                }
+            });
+            // -- END REGION --
+            // -- SUPERFICIE --
             $('#capa_proteccion').hide();
             $('#click_proteccion').click(function () {
                 var elemento = document.getElementById('proteccion').value;
@@ -265,6 +288,9 @@
                     $('#capa_global').hide();
                 }
             });
+            // -- END SUPERFICIE --
+            // -- INVESTIGACION --
+            // -- END INVESTIGACION --
         });
     </script>
 @endsection

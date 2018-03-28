@@ -6,48 +6,53 @@
                 <b class="info-text" style="font-size: 18px;">Región</b>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_reg_andino','Andino') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_andino">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Andino</p>
                             </div>
+                            {!! Form::hidden('andino',0,['id' => 'andino']) !!}
+                            {!! Form::hidden('mag_reg_andino',0,['id' => 'mag_reg_andino']) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_reg_valle','Valles') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_valle">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Valles</p>
                             </div>
+                            {!! Form::hidden('valle',0,['id' => 'valle']) !!}
+                            {!! Form::hidden('mag_reg_valle',0,['id' => 'mag_reg_valle']) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_reg_chaco','Chaco') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_chaco">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Chaco</p>
                             </div>
+                            {!! Form::hidden('chaco',0,['id' => 'chaco']) !!}
+                            {!! Form::hidden('mag_reg_chaco',0,['id' => 'mag_reg_chaco']) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_reg_chiquitania','Chiquitania') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_chiquitania">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Chiquitania</p>
                             </div>
+                            {!! Form::hidden('chiquitania',0,['id' => 'chiquitania']) !!}
+                            {!! Form::hidden('mag_reg_chiquitania',0,['id' => 'mag_reg_chiquitania']) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_reg_amazonia','Amazonia') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_amazonia">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Amazonia</p>
                             </div>
+                            {!! Form::hidden('amazonia',0,['id' => 'amazonia']) !!}
+                            {!! Form::hidden('mag_reg_amazonia',0,['id' => 'mag_reg_amazonia']) !!}
                         </div>
                     </div>
                 </div>
@@ -67,7 +72,6 @@
                                 <p>Protección Ambiental</p>
                             </div>
                             {!! Form::hidden('proteccion',0,['id' => 'proteccion']) !!}
-                            <input type="text" name="xxx" value="" hidden="true"/>
                         </div>
                         <div class="input-group input-group-sm" id='capa_proteccion'>
                             {!! Form::text('mag_sup_proteccion',null,['class' => 'form-control text-right', 'id' => 'mag_sup_proteccion']) !!}
@@ -153,21 +157,23 @@
                 <b class="info-text" style="font-size: 18px;">Investigación</b>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_inv_basica','Basica') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_basica">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Básica</p>
                             </div>
+                            {!! Form::hidden('basica',0,['id' => 'basica']) !!}
+                            {!! Form::hidden('mag_inv_basica',0,['id' => 'mag_inv_basica']) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox">
-                            {!! Form::checkbox('mag_inv_aplicada','Aplicada') !!}
+                        <div class="choice" data-toggle="wizard-checkbox" id="click_aplicada">
                             <div class="card card-checkboxes card-hover-effect">
                                 <i class="ti-pencil-alt"></i>
                                 <p>Aplicada</p>
                             </div>
+                            {!! Form::hidden('aplicada',0,['id' => 'aplicada']) !!}
+                            {!! Form::hidden('mag_inv_aplicada',0,['id' => 'mag_inv_aplicada']) !!}
                         </div>
                     </div>
                 </div>
