@@ -275,20 +275,6 @@
                 }
             });
 
-            $('#capa_global').hide();
-            $('#click_global').click(function () {
-                var elemento = document.getElementById('global').value;
-                if(elemento == 0) {
-                    document.getElementById('global').value = 1;
-                    $('#mag_sup_global').val('');
-                    $('#capa_global').show();
-                }else{
-                    document.getElementById('global').value = 0;
-                    $('#mag_sup_global').val('');
-                    $('#capa_global').hide();
-                }
-            });
-            // -- END SUPERFICIE --
             // -- INVESTIGACION --
             // -- END INVESTIGACION --
         });

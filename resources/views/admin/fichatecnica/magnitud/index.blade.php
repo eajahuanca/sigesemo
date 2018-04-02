@@ -132,23 +132,6 @@
                         </div>
                     </div>
                     <!--END COMERCIAL-->
-                    <!--GLOBAL-->
-                    <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_global">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Global</p>
-                            </div>
-                            {!! Form::hidden('global',0,['id' => 'global']) !!}
-                        </div>
-                        <div class="input-group input-group-sm" id='capa_global'>
-                            {!! Form::text('mag_sup_global',null,['class' => 'form-control text-right', 'id' => 'mag_sup_global']) !!}
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat">(Ha)</button>
-                            </span>
-                        </div>
-                    </div>
-                    <!--END GLOBAL-->
                 </div>
             </div>
         </div>

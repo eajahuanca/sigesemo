@@ -100,4 +100,29 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="row">
+            <div class="col-md-4">
+                {!! Form::label('cob_municipio_total', 'Municipio(s)', ['class' => 'pull-right']) !!}
+            </div>
+            <div class="col-md-2">
+                {!! Form::text('cob_municipio_total', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 15)']) !!}            
+            </div>
+            <div class="col-md-2">
+                {!! Form::text('cob_municipio_abarca', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 7)']) !!}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                {!! Form::label('cob_comunidad_total', 'Comunidad(es)', ['class' => 'pull-right']) !!}
+            </div>
+            <div class="col-md-2">
+                {!! Form::text('cob_comunidad_total', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 15)']) !!}
+            </div>
+            <div class="col-md-2">
+                {!! Form::text('cob_comunidad_abarca', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 7)']) !!}
+            </div>
+        </div>
+    </div>
 </div>
