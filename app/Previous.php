@@ -96,6 +96,10 @@ class Previous extends Model
         return $this->hasMany('App\Elegible');
     }
 
+    public function fichatecnica(){
+        return $this->hasMany('App\Fichatecnica');
+    }
+
     public function scopeCantidadEstados(){
         return DB::table('documentos')
                 ->select('pre_estado', DB::raw('count(*) as total'))

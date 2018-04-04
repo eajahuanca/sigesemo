@@ -2,58 +2,39 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]','Agenda 2025') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Agenda 2025</p>
-                </div>
-            </div>
+            <label>{{ Form::checkbox('pertinencia[]', 'Agenda 2025', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Agenda 2025' !!}
+            </label>
         </div>
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]', 'PDES') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>PDES</p>
-                </div>
-            </div>
+            <label>{{ Form::checkbox('pertinencia[]', 'PDES', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'PDES' !!}
+            </label>
         </div>
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]', 'PSDI') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>PSDI</p>
-                </div>
-            </div>
+            <label>{{ Form::checkbox('pertinencia[]', 'PSDI', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'PSDI' !!}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-4">
+            <label>{{ Form::checkbox('pertinencia[]', 'PEI', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'PEI' !!}
+            </label>
         </div>
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]', 'PEI') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>PEI</p>
-                </div>
-            </div>
+            <label>{{ Form::checkbox('pertinencia[]', 'NORMATIVA DEL SECTOR', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Normativa del Sector' !!}
+            </label>
         </div>
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]', 'NORMATIVA DEL SECTOR') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>NORMATIVA DEL SECTOR</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox">
-                {!! Form::checkbox('per_nombre[]', 'GUIA') !!}
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>GUIA</p>
-                </div>
-            </div>
+            <label>{{ Form::checkbox('pertinencia[]', 'GUIA', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'GUIA' !!}
+            </label>
         </div>
     </div>
 </div>

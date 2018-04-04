@@ -64,15 +64,18 @@ Route::group(['middleware' => 'auth'], function(){
     //Cumplimiento de elegibilidad - LEGAL
     Route::get('eleleg', 'ElegibleLegalController@index')->name('eleleg.index')->middleware('permission:eleleg.index');
     Route::get('eleleg/create', 'ElegibleLegalController@create')->name('eleleg.create')->middleware('permission:eleleg.create');
-    Route::post('eleleg/store', 'ElegibleTecnElegibleLegalControllericoController@store')->name('eleleg.store')->middleware('permission:eleleg.store');
+    Route::post('eleleg/store', 'ElegibleLegalController@store')->name('eleleg.store')->middleware('permission:eleleg.store');
     Route::get('eleleg/{elegible}/edit', 'ElegibleLegalController@edit')->name('eleleg.edit')->middleware('permission:eleleg.edit');
     Route::put('eleleg/{elegible}', 'ElegibleLegalController@update')->name('eleleg.update')->middleware('permission:eleleg.update');
     Route::get('eleleg/{elegible}', 'ElegibleLegalController@show')->name('eleleg.show')->middleware('permission:eleleg.show');
 
-    Route::get('ficha', 'FichaTecnicaController@index')->name('fichatecnica.index');
-
     //Municipios
     Route::get('getmunicipio/{depto}','MunicipioController@getMunicipio');
+
+    //Ficha Técnica
+    Route::get('ficha', 'FichaTecnicaController@index')->name('ficha.index')->middleware('permission:ficha.index');
+    Route::get('ficha/{iddocumento}/create', 'FichaTecnicaController@create')->name('ficha.create')->middleware('permission:ficha.create');
+    Route::post('ficha/store', 'FichaTecnicaController@store')->name('ficha.store')->middleware('permission:ficha.store');
 
     Route::get('/home', 'HomeController@index');
 });

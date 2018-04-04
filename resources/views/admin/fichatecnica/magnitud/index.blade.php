@@ -1,135 +1,68 @@
-<h3 class="info-text"> Seleccione una de las opciones que se visualizan a continuación</h3>
+<h4 class="info-text"> Seleccione una de las opciones que se visualizan a continuación</h4>
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="col-sm-4">
             <div style="border:2px dotted green;padding: 1.5em 1.2em 0em 1.2em;border-radius:4px;">
-                <b class="info-text" style="font-size: 18px;">Región</b>
+                <b class="info-text" style="font-size: 18px;">Región</b><br><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_andino">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Andino</p>
-                            </div>
-                            {!! Form::hidden('andino',0,['id' => 'andino']) !!}
-                            {!! Form::hidden('mag_reg_andino',0,['id' => 'mag_reg_andino']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_region[]', 'Andino', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Andino' !!}
+                        </label>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_valle">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Valles</p>
-                            </div>
-                            {!! Form::hidden('valle',0,['id' => 'valle']) !!}
-                            {!! Form::hidden('mag_reg_valle',0,['id' => 'mag_reg_valle']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_region[]', 'Valle(s)', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Valle(s)' !!}
+                        </label>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_chaco">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Chaco</p>
-                            </div>
-                            {!! Form::hidden('chaco',0,['id' => 'chaco']) !!}
-                            {!! Form::hidden('mag_reg_chaco',0,['id' => 'mag_reg_chaco']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_region[]', 'Chaco', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Chaco' !!}
+                        </label>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_chiquitania">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Chiquitania</p>
-                            </div>
-                            {!! Form::hidden('chiquitania',0,['id' => 'chiquitania']) !!}
-                            {!! Form::hidden('mag_reg_chiquitania',0,['id' => 'mag_reg_chiquitania']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_region[]', 'Chiquitania', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Chiquitania' !!}
+                        </label>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_amazonia">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Amazonia</p>
-                            </div>
-                            {!! Form::hidden('amazonia',0,['id' => 'amazonia']) !!}
-                            {!! Form::hidden('mag_reg_amazonia',0,['id' => 'mag_reg_amazonia']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_region[]', 'Amazonia', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Amazonia' !!}
+                        </label>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="col-sm-4">
             <div style="border:2px dotted green;padding: 1.5em 1.2em 0em 1.2em;border-radius:4px;">
-                <b class="info-text" style="font-size: 18px;">Superficie (HA)</b>
+                <b class="info-text" style="font-size: 18px;">Superficie (HA)</b><br><br>
                 <div class="row">
-
                     <!--PROTECCION-->
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_proteccion">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Protección Ambiental</p>
-                            </div>
-                            {!! Form::hidden('proteccion',0,['id' => 'proteccion']) !!}
-                        </div>
-                        <div class="input-group input-group-sm" id='capa_proteccion'>
-                            {!! Form::text('mag_sup_proteccion',null,['class' => 'form-control text-right', 'id' => 'mag_sup_proteccion']) !!}
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat">(Ha)</button>
-                            </span>
-                        </div>
+                        <label>{{ Form::checkbox('mag_superficie[]', 'Protección Ambiental', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Protección Ambiental' !!}
+                        </label>
                     </div>
                     <!--END PROTECCION-->
                     <!--SILVICULTURA-->
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_silvicultura">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Silvicultura Urbana</p>
-                            </div>
-                            {!! Form::hidden('silvicultura',0,['id' => 'silvicultura']) !!}
-                        </div>
-                        <div class="input-group input-group-sm" id='capa_silvicultura'>
-                            {!! Form::text('mag_sup_silvicultura',null,['class' => 'form-control text-right', 'id' => 'mag_sup_silvicultura']) !!}
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat">(Ha)</button>
-                            </span>
-                        </div>
+                        <label>{{ Form::checkbox('mag_superficie[]', 'Silvicultura Urbana', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Silvicultura Urbana' !!}
+                        </label>
                     </div>
                     <!--END SILVICULTURA-->
                     <!--SAFF-->
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_saff">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>SAFF-SSP</p>
-                            </div>
-                            {!! Form::hidden('saff',0,['id' => 'saff']) !!}
-                        </div>
-                        <div class="input-group input-group-sm" id='capa_saff'>
-                            {!! Form::text('mag_sup_saff',null,['class' => 'form-control text-right', 'id' => 'mag_sup_saff']) !!}
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat">(Ha)</button>
-                            </span>
-                        </div>
+                        <label>{{ Form::checkbox('mag_superficie[]', 'SAFF-SSP', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'SAFF-SSP' !!}
+                        </label>
                     </div>
                     <!--END SAFF-->
                     <!--COMERCIAL-->
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_comercial">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Comercial</p>
-                            </div>
-                            {!! Form::hidden('comercial',0,['id' => 'comercial']) !!}
-                        </div>
-                        <div class="input-group input-group-sm" id='capa_comercial'>
-                            {!! Form::text('mag_sup_comercial',null,['class' => 'form-control text-right', 'id' => 'mag_sup_comercial']) !!}
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat">(Ha)</button>
-                            </span>
-                        </div>
+                        <label>{{ Form::checkbox('mag_superficie[]', 'Comercial', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Comercial' !!}
+                        </label>
                     </div>
                     <!--END COMERCIAL-->
                 </div>
@@ -137,27 +70,106 @@
         </div>
         <div class="col-sm-4">
             <div style="border:2px dotted green;padding: 1.5em 1.2em 0em 1.2em;border-radius:4px;">
-                <b class="info-text" style="font-size: 18px;">Investigación</b>
+                <b class="info-text" style="font-size: 18px;">Investigación</b><br><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_basica">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Básica</p>
-                            </div>
-                            {!! Form::hidden('basica',0,['id' => 'basica']) !!}
-                            {!! Form::hidden('mag_inv_basica',0,['id' => 'mag_inv_basica']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_investigacion[]', 'Básica', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Básica' !!}
+                        </label>
                     </div>
                     <div class="col-md-12">
-                        <div class="choice" data-toggle="wizard-checkbox" id="click_aplicada">
-                            <div class="card card-checkboxes card-hover-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <p>Aplicada</p>
-                            </div>
-                            {!! Form::hidden('aplicada',0,['id' => 'aplicada']) !!}
-                            {!! Form::hidden('mag_inv_aplicada',0,['id' => 'mag_inv_aplicada']) !!}
-                        </div>
+                        <label>{{ Form::checkbox('mag_investigacion[]', 'Aplicada', null,['class' => 'flat-red', 'id' => 'pre_programa']) }}
+                            &nbsp;&nbsp;&nbsp;{!! 'Aplicada' !!}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="border:2px dotted green;padding: 1.5em 1.2em 0em 1.2em;border-radius:4px;">
+            <b class="info-text" style="font-size: 18px;">Contribución a las metas (ha)</b><br><br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_suplapaz', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) La Paz</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_suporuro', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Oruro</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_suppotosi', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Potosi</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_supcochabamba', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Cochabamba</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_supsantacruz', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Santa Cruz</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_supbeni', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Beni</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_suppando', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Pando</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_suptarija', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Tarija</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_supchuquisaca', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Chuquisaca</a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        {!! Form::text('mag_supnacional', null,['class' => 'form-control text-right', 'placeholder' => '0.00']) !!}
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary btn-sm">(Ha) Nacional</a>
+                        </div>                
                     </div>
                 </div>
             </div>

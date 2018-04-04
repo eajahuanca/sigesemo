@@ -2,113 +2,71 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_lapaz">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>La Paz</p>
-                </div>
-                {!! Form::hidden('lapaz',0,['id' => 'lapaz']) !!}
-                {!! Form::hidden('cob_lapaz',0,['id' => 'cob_lapaz']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'La Paz', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'La Paz' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_oruro">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Oruro</p>
-                </div>
-                {!! Form::hidden('oruro',0,['id' => 'oruro']) !!}
-                {!! Form::hidden('cob_oruro',0,['id' => 'cob_oruro']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Oruro', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Oruro' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_potosi">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Potosi</p>
-                </div>
-                {!! Form::hidden('potosi',0,['id' => 'potosi']) !!}
-                {!! Form::hidden('cob_potosi',0,['id' => 'cob_potosi']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Potosi', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Potosi' !!}
+            </label>
+        </div>
+        <br><br>
+        <div class="col-sm-4">
+            <label>{{ Form::checkbox('cob_deptos[]', 'Beni', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Beni' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_beni">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Beni</p>
-                </div>
-                {!! Form::hidden('beni',0,['id' => 'beni']) !!}
-                {!! Form::hidden('cob_beni',0,['id' => 'cob_beni']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Pando', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Pando' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_pando">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Pando</p>
-                </div>
-                {!! Form::hidden('pando',0,['id' => 'pando']) !!}
-                {!! Form::hidden('cob_pando',0,['id' => 'cob_pando']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Santa Cruz', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Santa Cruz' !!}
+            </label>
+        </div>
+        <br><br>
+        <div class="col-sm-4">
+            <label>{{ Form::checkbox('cob_deptos[]', 'Tarija', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Tarija' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_santacruz">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Santa Cruz</p>
-                </div>
-                {!! Form::hidden('santacruz',0,['id' => 'santacruz']) !!}
-                {!! Form::hidden('cob_santacruz',0,['id' => 'cob_santacruz']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Chuquisaca', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Chuquisaca' !!}
+            </label>
         </div>
 
         <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_tarija">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Tarija</p>
-                </div>
-                {!! Form::hidden('tarija',0,['id' => 'tarija']) !!}
-                {!! Form::hidden('cob_tarija',0,['id' => 'cob_tarija']) !!}
-            </div>
-        </div>
-
-        <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_chuquisaca">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Chuquisaca</p>
-                </div>
-                {!! Form::hidden('chuquisaca',0,['id' => 'chuquisaca']) !!}
-                {!! Form::hidden('cob_chuquisaca',0,['id' => 'cob_chuquisaca']) !!}
-            </div>
-        </div>
-
-        <div class="col-sm-4">
-            <div class="choice" data-toggle="wizard-checkbox" id="click_cochabamba">
-                <div class="card card-checkboxes card-hover-effect">
-                    <i class="ti-pencil-alt"></i>
-                    <p>Cochabamba</p>
-                </div>
-                {!! Form::hidden('cochabamba',0,['id' => 'cochabamba']) !!}
-                {!! Form::hidden('cob_cochabamba',0,['id' => 'cob_cochabamba']) !!}
-            </div>
+            <label>{{ Form::checkbox('cob_deptos[]', 'Cochabamba', null,['class' => 'flat-red']) }}
+                &nbsp;&nbsp;&nbsp;{!! 'Cochabamba' !!}
+            </label>
         </div>
     </div>
+</div>
+<br><br>
+<div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="row">
             <div class="col-md-4">
                 {!! Form::label('cob_municipio_total', 'Municipio(s)', ['class' => 'pull-right']) !!}
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 input-group-sm">
                 {!! Form::text('cob_municipio_total', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 15)']) !!}            
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 input-group-sm">
                 {!! Form::text('cob_municipio_abarca', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 7)']) !!}
             </div>
         </div>
@@ -117,10 +75,10 @@
             <div class="col-md-4">
                 {!! Form::label('cob_comunidad_total', 'Comunidad(es)', ['class' => 'pull-right']) !!}
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 input-group-sm">
                 {!! Form::text('cob_comunidad_total', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 15)']) !!}
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 input-group-sm">
                 {!! Form::text('cob_comunidad_abarca', null, ['class' => 'form-control text-right', 'placeholder' => '(Ejemplo: 7)']) !!}
             </div>
         </div>
