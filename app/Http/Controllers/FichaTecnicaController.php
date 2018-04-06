@@ -132,4 +132,20 @@ class FichaTecnicaController extends Controller
         }
         return redirect()->route('ficha.index');
     }
+
+    public function reporte(Request $request, $idficha){
+        $fechaImpresion = 'La Paz, '.date('d').' de '.$this->fecha().' de '.date('Y');
+        $view = \View::make('admin.fichatecnica.ficha', compact('fechaImpresion'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper('LETTER','portrait');
+        $pdf->loadHTML($view);
+        //return $pdf->stream();
+        return $pdf->download('FichaTecnica'.date('dmY').date('His').'.pdf');
+    }
+
+    public function fecha()
+    {
+        $arrayMes = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+        return $arrayMes[(int)(date('m')) - 1];
+    }
 }

@@ -85,7 +85,9 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     @if($ficha)
-                                                        <a href="{{ $ficha->id }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> FICHA TECNICA </a><br>
+                                                        @can('ficha.reporte')
+                                                        <a href="{{ route('ficha.reporte', $ficha->id) }}" target="_blank"><img src="{{ asset('plugins/login/img/pdfpng.png') }}"/> FICHA TECNICA </a><br>
+                                                        @endcan
                                                         <div class="text-left">
                                                             <i class="fa fa-calendar"></i> <b>Generado en fecha : </b><em>{{ fechaHora($ficha->created_at) }}</em><br>
                                                             <i class="fa fa-user"></i> <b>Por : </b><em>{{ $ficha->userActualiza->us_nombre.' '.$ficha->userActualiza->us_paterno.' '.$ficha->userActualiza->us_materno }}</em><br>

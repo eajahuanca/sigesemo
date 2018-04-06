@@ -183,6 +183,7 @@ return [
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
         //'nilsenj\Toastr\ToastrServiceProvider',
         nilsenj\Toastr\ToastrServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -237,6 +238,7 @@ return [
         'Shinobi' => Caffeinated\Shinobi\Facades\Shinobi::class,
         //'Toastr' => 'nilsenj\Toastr\Facades\Toastr',
         'Toastr' => nilsenj\Toastr\Facades\Toastr::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

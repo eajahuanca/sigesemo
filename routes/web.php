@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('ficha', 'FichaTecnicaController@index')->name('ficha.index')->middleware('permission:ficha.index');
     Route::get('ficha/{iddocumento}/create', 'FichaTecnicaController@create')->name('ficha.create')->middleware('permission:ficha.create');
     Route::post('ficha/store', 'FichaTecnicaController@store')->name('ficha.store')->middleware('permission:ficha.store');
+    Route::get('ficha/reporte/{idficha}', 'FichaTecnicaController@reporte')->name('ficha.reporte')->middleware('permission:ficha.reporte');
 
     Route::get('/home', 'HomeController@index');
 });
